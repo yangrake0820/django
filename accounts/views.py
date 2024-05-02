@@ -11,7 +11,7 @@ def home(request):
         user = User.objects.get(pk = user_id)
         return HttpResponse("Hello! %s님" % user)
     else:
-        return HttpResponse("로그인 해주세요!")
+        return redirect('/accounts/login')
 
 def register(request):
     if request.method == 'GET':
