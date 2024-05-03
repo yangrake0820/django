@@ -10,9 +10,25 @@
             <textarea class="form-control" readonly>{{ board.contents }}</textarea>
             <label for="tags">태그</label>
             <span id="tags" class="form-control">
-                {{ board.tags.all|join:"#" }}
+                {{ board.tags.all|join:"," }}
             </span>
+           
+            {% for comment in comment_view %}
+            <hr>
+            <p>{{ comment.author }}</p>
+            <p>{{ comment.comment }}</p>
+            <hr>
+            {% endfor %}
+            <br>
+            <form method="POST" action="{% url 'comment_write' board.id %}">
+                {% csrf_token %}
+                {{ comments }}
+                <br>
+                <input class="btn btn-primary" type="submit" value="댓글 입력">
+            </form>
         </div>
+        <br>
+        <br>
         <button class="btn btn-primary" onclick="location.href='/boards/list/'">돌아가기</button>
     </div>
 </div>

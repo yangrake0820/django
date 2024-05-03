@@ -1,4 +1,5 @@
 from django import forms
+from .models import Comment
 
 class BoardForm(forms.Form):
     title = forms.CharField(
@@ -10,3 +11,11 @@ class BoardForm(forms.Form):
             'required': '내용을 입력해주세요.'
         },widget=forms.Textarea, label = "내용")
     tags = forms.CharField(required=False, label = "태그")
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['comment']
+        widgets = {
+            'comment': forms.Textarea(attrs={'class': 'form-control'}),
+        }

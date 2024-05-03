@@ -20,9 +20,36 @@
                     <td>{{ board.writer }}</td>
                     <td>{{ board.created_at }}</td>
                 </tr>
-                {% endfor %}
             </tbody>
+            {% endfor %}
         </table>
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col-12">
+        <nav>
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    {% if boards.has_previous %}
+                    <a href="?p=1" class="page-link">처음으로</a>
+                    {% else %}
+                    <a href="#" class="page-link disabled">처음으로</a>
+                    {% endif %}
+                </li>
+                {% for page in boards.paginator.page_range %}
+                <li class="page-item {% if page == boards.number %}active{% endif %}">
+                    <a href="?p={{ page }}" class="page-link">{{ page }}</a>
+                </li>
+                {% endfor %}
+                <li class="page-item">
+                    {% if boards.has_next %}
+                    <a href="?p={{ boards.paginator.num_pages }}" class="page-link">마지막으로</a>
+                    {% else %}
+                    <a href="#" class="page-link disabled">마지막으로</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>
 <div class="row">
