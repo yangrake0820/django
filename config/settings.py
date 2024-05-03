@@ -26,16 +26,16 @@ SECRET_KEY = 'django-insecure-xx)&+rb#9%!hf5rtkr3-vnnfoij&^_@8+eh2_*cdq^0(=r0%9!
 # SECURITY WARNING: don't run with debug turned on in production!
 
 ## 배포전 변경 -S ##
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False 
 
-ALLOWED_HOSTS = []
-# ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 ## 배포전 변경 -E ##
 
